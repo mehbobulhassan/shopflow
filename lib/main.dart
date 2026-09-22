@@ -10,8 +10,18 @@ class ShopFlow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Shop Flow',
-      home: const Text("Shop Flow"),
+      debugShowCheckedModeBanner: false,
+      title: 'ShopFlow',
+      home: HomeScreen(),
     );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+  return Scaffold(body: const Center(child: Text("ShowFlow"),),);
   }
 }
