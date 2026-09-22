@@ -12,7 +12,7 @@ class ShopFlow extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ShopFlow',
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }
@@ -22,6 +22,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  return Scaffold(body: const Center(child: Text("ShowFlow"),),);
+  return const Scaffold(body: Center(child: Text("ShopFlow"),),);
   }
 }
