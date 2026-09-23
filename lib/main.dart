@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopflow/core/theme/app_theme.dart';
 
 void main() {
   runApp(const ShopFlow());
@@ -12,6 +13,7 @@ class ShopFlow extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ShopFlow',
+      theme: AppTheme.light,
       home: const HomeScreen(),
     );
   }
