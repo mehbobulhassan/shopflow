@@ -35,7 +35,7 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
       
     } else {
       throw Exception(
-        "Failed to load product. Status code: ${response.statusCode} ",
+        "Failed to load products. Status code: ${response.statusCode} ",
       );
     }
   }
@@ -73,7 +73,7 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
           .toList();
     } else {
       throw Exception(
-        "Failed to load Products. Status code: ${response.statusCode}",
+        "Failed to load products. Status code: ${response.statusCode}",
       );
     }
   }
