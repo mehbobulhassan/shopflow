@@ -11,7 +11,7 @@ class ShopFlowApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'ShopFlow',
       theme: AppTheme.light,
-      routerConfig: AppRouter.route,
+      routerConfig: AppRouter.route
     );
   }
 }
