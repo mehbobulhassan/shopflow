@@ -20,11 +20,21 @@ class ProductDebugScreen extends ConsumerWidget {
               Expanded(
                 child: products.isEmpty
                     ? const Center(child: Text("No products available"))
-                    : ListView.builder(
+                    : GridView.builder(
                         itemCount: products.length,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisSpacing: 12,
+                              mainAxisSpacing: 12,
+                              crossAxisCount: 2,
+                              childAspectRatio: 0.7,
+                            ),
                         itemBuilder: (context, index) {
                           final product = products[index];
-                          return Text(product.name);
+                          return ListTile(
+                            title: Text(product.name),
+                            subtitle: Text("\$${product.price.toStringAsFixed(2)}"),
+                          );
                         },
                       ),
               ),
