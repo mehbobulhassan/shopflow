@@ -12,8 +12,33 @@ class ProductCard extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Image.network(product.image, height: 120, fit: BoxFit.contain,),
-            Text(product.name, maxLines: 2, overflow: TextOverflow.ellipsis,),
+            Image.network(
+              product.image,
+              height: 120,
+              fit: BoxFit.contain,
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) {
+                  return child;
+                }
+                return const SizedBox(
+                  height: 120,
+                  child: Center(child: CircularProgressIndicator()),
+                );
+              },
+              errorBuilder: (context, error, stackTrace) => SizedBox(
+                height: 120,
+                child: Center(
+                  child: const Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.broken_image),
+                      Text("Image unavailable"),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Text(product.name, maxLines: 2, overflow: TextOverflow.ellipsis),
             Text("\$${product.price.toStringAsFixed(2)}"),
           ],
         ),
