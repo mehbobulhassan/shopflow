@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopflow/features/products/presentation/providers/product_providers.dart';
+import 'package:shopflow/features/products/presentation/widgets/product_card.dart';
 
 class ProductDebugScreen extends ConsumerWidget {
   const ProductDebugScreen({super.key});
@@ -31,10 +32,7 @@ class ProductDebugScreen extends ConsumerWidget {
                             ),
                         itemBuilder: (context, index) {
                           final product = products[index];
-                          return ListTile(
-                            title: Text(product.name),
-                            subtitle: Text("\$${product.price.toStringAsFixed(2)}"),
-                          );
+                          return ProductCard(product: product);
                         },
                       ),
               ),
