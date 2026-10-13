@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopflow/core/theme/app_spacing.dart';
+import 'package:shopflow/core/theme/app_text_styles.dart';
 import 'package:shopflow/features/products/domain/entities/product.dart';
 
 class ProductCard extends StatelessWidget {
@@ -43,9 +44,9 @@ class ProductCard extends StatelessWidget {
               ),
             ),
             const SizedBox(height: AppSpacing.sm,),
-            Text(product.name, maxLines: 2, overflow: TextOverflow.ellipsis),
+            Text(product.name, maxLines: 2, overflow: TextOverflow.ellipsis, style: AppTextStyles.bodyMedium,),
             const SizedBox(height: AppSpacing.sm,),
-            Text("\$${product.price.toStringAsFixed(2)}"),
+            Text("\$${product.price.toStringAsFixed(2)}", style: AppTextStyles.price,),
           ],
         ),
       ),
