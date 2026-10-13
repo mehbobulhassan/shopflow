@@ -1,4 +1,3 @@
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopflow/features/products/data/datasources/product_remote_data_source.dart';
 import 'package:shopflow/features/products/data/datasources/product_remote_data_source_impl.dart';
@@ -6,7 +5,9 @@ import 'package:shopflow/features/products/data/repositories/product_repository_
 import 'package:shopflow/features/products/domain/entities/product.dart';
 import 'package:shopflow/features/products/domain/repositories/product_repository.dart';
 
-final productRemoteDataSourceProvider = Provider<ProductRemoteDataSource>((ref) {
+final productRemoteDataSourceProvider = Provider<ProductRemoteDataSource>((
+  ref,
+) {
   return ProductRemoteDataSourceImpl();
 });
 
@@ -15,9 +16,12 @@ final productRepositoryProvider = Provider<ProductRepository>((ref) {
   return ProductRepositoryImpl(dataSource);
 });
 
-
 final productsProvider = FutureProvider<List<Product>>((ref) {
   final repository = ref.watch(productRepositoryProvider);
   return repository.getProducts();
 });
 
+final productByIdProvider = FutureProvider.family<Product, int>((ref, id) {
+  final repository = ref.watch(productRepositoryProvider);
+  return repository.getProductById(id);
+});
