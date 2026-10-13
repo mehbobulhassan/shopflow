@@ -11,7 +11,7 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      
+      elevation: 1,
       color: AppColors.surface,
       shape: RoundedRectangleBorder(
         side: BorderSide(color: AppColors.border, width: 1),
