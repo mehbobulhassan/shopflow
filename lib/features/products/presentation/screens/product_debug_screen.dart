@@ -32,7 +32,7 @@ class ProductDebugScreen extends ConsumerWidget {
                             ),
                         itemBuilder: (context, index) {
                           final product = products[index];
-                          return ProductCard(product: product);
+                          return ProductCard(product: product, onTap: (){},);
                         },
                       ),
               ),
