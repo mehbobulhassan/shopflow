@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shopflow/features/products/presentation/providers/product_providers.dart';
 import 'package:shopflow/features/products/presentation/widgets/product_card.dart';
 
@@ -32,7 +33,12 @@ class ProductDebugScreen extends ConsumerWidget {
                             ),
                         itemBuilder: (context, index) {
                           final product = products[index];
-                          return ProductCard(product: product, onTap: (){},);
+                          return ProductCard(
+                            product: product,
+                            onTap: () {
+                              context.push('/products/${product.id}');
+                            },
+                          );
                         },
                       ),
               ),
