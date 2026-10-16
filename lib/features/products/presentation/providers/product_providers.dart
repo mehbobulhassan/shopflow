@@ -25,3 +25,15 @@ final productByIdProvider = FutureProvider.family<Product, int>((ref, id) {
   final repository = ref.watch(productRepositoryProvider);
   return repository.getProductById(id);
 });
+
+final productSearchProvider = FutureProvider.family<List<Product>, String>((
+  ref,
+  query,
+) {
+  final searchQuery = query.trim();
+  if (searchQuery.isEmpty) {
+    return [];
+  }
+  final repository = ref.watch(productRepositoryProvider);
+  return repository.searchProducts(searchQuery);
+});

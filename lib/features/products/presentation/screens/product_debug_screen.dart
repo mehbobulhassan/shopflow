@@ -11,7 +11,14 @@ class ProductDebugScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final productsAsync = ref.watch(productsProvider);
     return Scaffold(
-      appBar: AppBar(title: const Text("Product Debug Screen")),
+      appBar: AppBar(title: const Text("Product Debug Screen"), 
+      actions: [
+        IconButton(onPressed: (){
+          context.push('/search');
+
+        }, icon: const Icon(Icons.search))
+      ],
+      ),
       body: productsAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         data: (products) => Padding(
@@ -46,7 +53,7 @@ class ProductDebugScreen extends ConsumerWidget {
           ),
         ),
         error: (error, stackTrace) =>
-            Center(child: Text("Failed to load products: $error")),
+        Center(child: Text("Failed to load products: $error")),
       ),
     );
   }
