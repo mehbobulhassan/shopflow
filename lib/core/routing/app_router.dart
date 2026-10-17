@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shopflow/features/products/presentation/screens/product_category_screen.dart';
 import 'package:shopflow/features/products/presentation/screens/product_debug_screen.dart';
 import 'package:shopflow/features/products/presentation/screens/product_detail_screen.dart';
 import 'package:shopflow/features/products/presentation/screens/product_search_screen.dart';
@@ -24,14 +25,19 @@ class AppRouter {
           return ProductDetailScreen(productId: id);
         },
       ),
-      
+
       GoRoute(
         path: '/product-debug',
         builder: (context, state) => const ProductDebugScreen(),
       ),
-     GoRoute(path: '/search', 
-     builder: ((context, state) => const ProductSearchScreen())
-     )
+      GoRoute(
+        path: '/search',
+        builder: ((context, state) => const ProductSearchScreen()),
+      ),
+      GoRoute(
+        path: '/categories',
+        builder: (context, state) => const ProductCategoryScreen(),
+      ),
     ],
   );
 }

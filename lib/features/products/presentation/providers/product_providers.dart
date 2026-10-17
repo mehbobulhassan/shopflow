@@ -37,3 +37,11 @@ final productSearchProvider = FutureProvider.family<List<Product>, String>((
   final repository = ref.watch(productRepositoryProvider);
   return repository.searchProducts(searchQuery);
 });
+
+final productCategoryProvider = FutureProvider.family<List<Product>, String>((
+  ref,
+  category,
+) {
+  final repository = ref.watch(productRepositoryProvider);
+  return repository.getProductByCategory(category);
+});
