@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -14,29 +13,22 @@ class ProductCategoryScreen extends ConsumerStatefulWidget {
       _ProductCategoryScreenState();
 }
 
-class _ProductCategoryScreenState
-    extends ConsumerState<ProductCategoryScreen> {
+class _ProductCategoryScreenState extends ConsumerState<ProductCategoryScreen> {
   String? selectedCategory;
 
   @override
   Widget build(BuildContext context) {
     final productState = ref.watch(productsProvider);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Categories'),
-      ),
+      appBar: AppBar(title: const Text('Categories')),
       body: productState.when(
         data: (products) {
           if (products.isEmpty) {
-            return const Center(
-              child: Text('No products found.'),
-            );
+            return const Center(child: Text('No products found.'));
           }
-          final categories = products
-              .map((product) => product.category)
-              .toSet()
-              .toList()
-            ..sort();
+          final categories =
+              products.map((product) => product.category).toSet().toList()
+                ..sort();
           return Column(
             children: [
               Padding(
@@ -50,8 +42,7 @@ class _ProductCategoryScreenState
                       selected: selectedCategory == category,
                       onSelected: (isSelected) {
                         setState(() {
-                          selectedCategory =
-                              isSelected ? category : null;
+                          selectedCategory = isSelected ? category : null;
                         });
                       },
                     );
@@ -61,9 +52,7 @@ class _ProductCategoryScreenState
               Expanded(
                 child: selectedCategory == null
                     ? const Center(
-                        child: Text(
-                          'Select a category to browse products.',
-                        ),
+                        child: Text('Select a category to browse products.'),
                       )
                     : Consumer(
                         builder: (context, ref, child) {
@@ -86,21 +75,18 @@ class _ProductCategoryScreenState
                                   itemCount: categoryProducts.length,
                                   gridDelegate:
                                       const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    mainAxisSpacing: 12,
-                                    crossAxisSpacing: 12,
-                                    childAspectRatio: 0.65,
-                                  ),
+                                        crossAxisCount: 2,
+                                        mainAxisSpacing: 12,
+                                        crossAxisSpacing: 12,
+                                        childAspectRatio: 0.65,
+                                      ),
                                   itemBuilder: (context, index) {
-                                    final product =
-                                        categoryProducts[index];
+                                    final product = categoryProducts[index];
 
                                     return ProductCard(
                                       product: product,
                                       onTap: () {
-                                        context.push(
-                                          '/products/${product.id}',
-                                        );
+                                        context.push('/products/${product.id}');
                                       },
                                     );
                                   },
@@ -140,9 +126,7 @@ class _ProductCategoryScreenState
             ],
           );
         },
-        loading: () => const Center(
-          child: CircularProgressIndicator(),
-        ),
+        loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, stackTrace) {
           return Center(
             child: Column(

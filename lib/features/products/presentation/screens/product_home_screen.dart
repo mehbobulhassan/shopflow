@@ -19,6 +19,7 @@ class ProductDebugScreen extends ConsumerWidget {
               context.push('/search');
             },
             icon: const Icon(Icons.search),
+            
           ),
           IconButton(
             icon: const Icon(Icons.category_outlined),
@@ -26,6 +27,12 @@ class ProductDebugScreen extends ConsumerWidget {
             onPressed: () {
               context.push('/categories');
             },
+          ),
+          IconButton(
+            onPressed: () {
+              context.push('/wishlist');
+            },
+            icon: Icon(Icons.favorite),
           ),
         ],
       ),

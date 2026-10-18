@@ -32,7 +32,6 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
         jsonDecode(response.body),
       );
       return data.map((item) => ProductModel.fromJson(item)).toList();
-      
     } else {
       throw Exception(
         "Failed to load products. Status code: ${response.statusCode} ",

@@ -3,9 +3,9 @@ import 'package:shopflow/features/products/domain/entities/product.dart';
 import 'package:shopflow/features/products/domain/repositories/product_repository.dart';
 
 class ProductRepositoryImpl implements ProductRepository {
-final ProductRemoteDataSource dataSource;
+  final ProductRemoteDataSource dataSource;
 
-ProductRepositoryImpl(this.dataSource);
+  ProductRepositoryImpl(this.dataSource);
 
   @override
   Future<List<Product>> getProductByCategory(String category) async {

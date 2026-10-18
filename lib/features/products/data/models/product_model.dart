@@ -23,7 +23,7 @@ class ProductModel {
       title: json['title'],
       description: json['description'],
       image: json['image'],
-      price: (json['price']as num).toDouble(),
+      price: (json['price'] as num).toDouble(),
       category: json['category'],
     );
   }

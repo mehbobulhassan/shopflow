@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -13,8 +12,7 @@ class ProductSearchScreen extends ConsumerStatefulWidget {
       _ProductSearchScreenState();
 }
 
-class _ProductSearchScreenState
-    extends ConsumerState<ProductSearchScreen> {
+class _ProductSearchScreenState extends ConsumerState<ProductSearchScreen> {
   final TextEditingController searchQuery = TextEditingController();
 
   String query = '';
@@ -47,9 +45,7 @@ class _ProductSearchScreenState
     final searchState = ref.watch(productSearchProvider(query));
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Search Products'),
-      ),
+      appBar: AppBar(title: const Text('Search Products')),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -93,9 +89,8 @@ class _ProductSearchScreenState
                       child: Text('Search for a product to get started.'),
                     )
                   : searchState.when(
-                      loading: () => const Center(
-                        child: CircularProgressIndicator(),
-                      ),
+                      loading: () =>
+                          const Center(child: CircularProgressIndicator()),
                       error: (error, stackTrace) => Center(
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -114,24 +109,26 @@ class _ProductSearchScreenState
                       data: (products) {
                         if (products.isEmpty) {
                           return const Center(
-                            child: Text('No products found. Try a different search.'),
+                            child: Text(
+                              'No products found. Try a different search.',
+                            ),
                           );
                         }
                         return GridView.builder(
                           itemCount: products.length,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 12,
-                            crossAxisSpacing: 12,
-                            childAspectRatio: 0.65
-                          ),
+                                crossAxisCount: 2,
+                                mainAxisSpacing: 12,
+                                crossAxisSpacing: 12,
+                                childAspectRatio: 0.65,
+                              ),
                           itemBuilder: (context, index) {
                             final product = products[index];
                             return ProductCard(
                               product: product,
-                              onTap: () {                               
-                               context.push('/products/${product.id}');
+                              onTap: () {
+                                context.push('/products/${product.id}');
                               },
                             );
                           },
