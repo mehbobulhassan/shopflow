@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopflow/core/theme/app_spacing.dart';
 import 'package:shopflow/core/theme/app_text_styles.dart';
+import 'package:shopflow/features/cart/presentation/providers/cart_provider.dart';
 import 'package:shopflow/features/products/presentation/providers/product_providers.dart';
 
 class ProductDetailScreen extends ConsumerWidget {
@@ -51,6 +52,33 @@ class ProductDetailScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: AppSpacing.xs),
                 Text(product.description, style: AppTextStyles.body),
+                ElevatedButton.icon(
+                  onPressed: () async {
+                    try {
+                      await ref
+                          .read(cartProvider.notifier)
+                          .addToCart(product.id);
+
+                      if (!context.mounted) return;
+
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Product added to cart')),
+                      );
+                    } catch (error) {
+                      if (!context.mounted) return;
+
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            "Couldn't add product to cart. Please try again.",
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                  icon: const Icon(Icons.add_shopping_cart),
+                  label: const Text('Add to Cart'),
+                ),
               ],
             ),
           ),

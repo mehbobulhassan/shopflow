@@ -19,7 +19,7 @@ class ProductDebugScreen extends ConsumerWidget {
               context.push('/search');
             },
             icon: const Icon(Icons.search),
-            
+
           ),
           IconButton(
             icon: const Icon(Icons.category_outlined),
@@ -34,6 +34,9 @@ class ProductDebugScreen extends ConsumerWidget {
             },
             icon: Icon(Icons.favorite),
           ),
+          IconButton(onPressed: (){
+            context.push('/cart');
+          }, icon: const Icon(Icons.gif_box_outlined))
         ],
       ),
       body: productsAsync.when(
