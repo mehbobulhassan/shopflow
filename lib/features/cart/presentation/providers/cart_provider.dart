@@ -41,8 +41,7 @@ class CartNotifier extends AsyncNotifier<List<CartItem>> {
 
   Future<void> addToCart(int productId) {
     return _serializeMutation(() async {
-      final currentItems = state.asData?.value;
-      if (currentItems == null) return;
+      final currentItems = await future;
 
       final existingIndex = currentItems.indexWhere(
         (item) => item.productId == productId,
@@ -83,6 +82,13 @@ class CartNotifier extends AsyncNotifier<List<CartItem>> {
       if (updatedItems.length == currentItems.length) return;
 
       await _saveAndUpdate(updatedItems);
+    });
+  }
+
+  Future<void> clearCart() {
+    return _serializeMutation(() async {
+      await future;
+      await _saveAndUpdate([]);
     });
   }
 

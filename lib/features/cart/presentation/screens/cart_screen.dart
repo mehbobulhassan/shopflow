@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:shopflow/features/cart/presentation/providers/cart_provider.dart';
 import 'package:shopflow/features/cart/presentation/widgets/cart_item_tile.dart';
@@ -99,6 +100,15 @@ class CartScreen extends ConsumerWidget {
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                   ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 15),
+                child: FilledButton(
+                  onPressed: () {
+                    context.push('/checkout');
+                  },
+                  child: const Text('Proceed to Checkout'),
                 ),
               ),
             ],

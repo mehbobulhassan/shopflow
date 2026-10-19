@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shopflow/features/cart/presentation/screens/cart_screen.dart';
+import 'package:shopflow/features/orders/presentation/screens/checkout_screen.dart';
+import 'package:shopflow/features/orders/presentation/screens/order_confirmation_screen.dart';
 import 'package:shopflow/features/products/presentation/screens/product_category_screen.dart';
 import 'package:shopflow/features/products/presentation/screens/product_home_screen.dart';
 import 'package:shopflow/features/products/presentation/screens/product_detail_screen.dart';
@@ -45,6 +47,14 @@ class AppRouter {
         builder: (context, state) => const ProductWishlistScreen(),
       ),
       GoRoute(path: '/cart', builder: (context, state) => const CartScreen()),
+      GoRoute(
+        path: '/checkout',
+        builder: (context, state) => const CheckoutScreen(),
+      ),
+      GoRoute(
+        path: '/order-confirmation',
+        builder: (context, state) => const OrderConfirmationScreen(),
+      ),
     ],
   );
 }
